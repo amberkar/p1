@@ -22,7 +22,7 @@ class Test_Card(unittest.TestCase):
     def test_rank(self):
         self.assertEqual(self.y_Card.rank_num, 12, "testing the rank_num variable")
 
-    # Error #1: Doesn't give face value of cards
+    # Error: Doesn't give face value of cards
     def test_string_method2(self):
         x_Card = Card(2, 1)
         self.assertEqual(x_Card.__str__(), "Ace of Hearts",
@@ -56,15 +56,14 @@ class Test_Deck(unittest.TestCase):
         self.assertEqual(len(self.x_Deck.cards), 51,
                          "testing that pop_card removes cards from deck")
 
-    # Error #2: sort_cards does not sort remaining cards in deck: gives full
-    #  deck length
+    # Error: sort_cards does not sort remaining cards in deck
     def test_Deck5(self):
         self.x_Deck.deal_hand(3)
         self.x_Deck.sort_cards()
         self.assertEqual(len(self.x_Deck.cards), 49,
                          "testing that sort_cards sorts only remaining cards in deck")
 
-    # Error #1: must reference Cards method, doesn't give face value of card
+    # Error: must reference Cards method, doesn't give face value of card
     def test_Deck6(self):
         Deck_string = self.x_Deck.__str__()
         self.assertIn("Ace of Hearts", Deck_string,
@@ -78,7 +77,7 @@ class Test_Deck(unittest.TestCase):
         self.assertEqual(len(self.x_Deck.deal_hand(52)), 52,
                          "testing the maximum length that deal_hand can take from deck")
 
-    # Error #3: deal_hand cannot handle taking out large values from deck
+    # Error: deal_hand cannot handle taking out large values from deck
     def test_Deck9(self):
         self.assertEqual(len(self.x_Deck.deal_hand(27)), 27,
                          "testing larger inputs for deal_hand to take from deck")
@@ -87,14 +86,11 @@ class Test_Deck(unittest.TestCase):
         self.assertEqual(len(self.x_Deck.deal_hand(20)), 20,
                          "testing medium inputs for deal_hand to take from deck")
 
-class Testing_playWarGames(unittest.TestCase):
+class Testing_Tuple(unittest.TestCase):
     def test_tuple(self):
-       result = play_war_game(True)
-        self.assertTrue(type(result), tuple)
-        self.assertTrue(type(result[0]), str)
-        self.assertTrue(type(result[1]), int)
-        self.assertTrue(type(result[2]), int, " Testing to make sure a tuple is returned")
-
+        result = play_war_game(True)
+        self.assertEqual(type(result[1]), int)
+        self.assertEqual(type(result[2]), int, " Testing to make sure a tuple is returned")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
