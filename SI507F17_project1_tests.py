@@ -87,8 +87,13 @@ class Test_Deck(unittest.TestCase):
         self.assertEqual(len(self.x_Deck.deal_hand(20)), 20, "testing medium "
                          "inputs for deal_hand to take from deck")
 
-
-
+class Testing_playWarGames(unittest.TestCase):
+    def test_tuple(self):
+       result = play_war_game(True)
+        self.assertTrue(type(result), tuple)
+        self.assertTrue(type(result[0]), str)
+        self.assertTrue(type(result[1]), int)
+        self.assertTrue(type(result[2]), int, " Testing to make sure a tuple is returned")
 
 
 if __name__ == '__main__':
