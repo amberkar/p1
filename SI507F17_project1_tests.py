@@ -10,12 +10,6 @@ class Test_Card(unittest.TestCase):
         self.assertEqual(self.x_Card.__str__(), "3 of Clubs",
                          "testing string method Card with number value")
 
-    def test_suit(self):
-        self.assertEqual(self.x_Card.suit, "Clubs", "testing suit variable")
-
-    def test_rank_num(self):
-        self.assertEqual(self.x_Card.rank_num, 3, "testing the rank_num variable")
-
     def test_rank(self):
         self.assertEqual(self.y_Card.rank, "Queen", "testing the rank_num variable")
 
@@ -35,11 +29,6 @@ class Test_Deck(unittest.TestCase):
     def test_Deck1(self):
         self.assertEqual(type(self.x_Deck.cards), type([1, 2, 3]),
                          "testing that cards variable creates a list")
-
-    def test_Deck2(self):
-        Deck_string = self.x_Deck.__str__()
-        self.assertIn("3 of Hearts", Deck_string,
-                      "testing string method of Deck with the number value")
 
     def test_Deck3(self):
         Deck_string = self.x_Deck.__str__()
