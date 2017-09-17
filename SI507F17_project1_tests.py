@@ -1,6 +1,7 @@
 import unittest
 from SI507F17_project1_cards import *
 
+
 class Test_Card(unittest.TestCase):
     def setUp(self):
         self.x_Card = Card(1, 3)
@@ -80,6 +81,7 @@ class Testing_Tuple(unittest.TestCase):
         result = play_war_game(True)
         self.assertEqual(type(result[1]), int)
         self.assertEqual(type(result[2]), int, " Testing to make sure a tuple is returned")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
