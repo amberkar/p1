@@ -28,6 +28,65 @@ class Test_Card(unittest.TestCase):
         self.assertEqual(x_Card.__str__(), "Ace of Hearts", "testing string "
                          "method of Card with face value")
 
+class Test_Deck(unittest.TestCase):
+    def setUp(self):
+        self.x_Deck = Deck()
+
+    def test_Deck1(self):
+        self.assertEqual(type(self.x_Deck.cards), type([1, 2, 3]),
+                         "testing cards variable is a list")
+
+    def test_Deck2(self):
+        Deck_string = self.x_Deck.__str__()
+        self.assertIn("3 of Hearts", Deck_string,
+                      "testing string method of Deck with number value")
+
+    def test_Deck3(self):
+        Deck_string = self.x_Deck.__str__()
+        self.assertEqual(len(Deck_string.split('\n')), 52,
+                         "testing number of cards in the deck")
+
+    def test_Deck4(self):
+        self.x_Deck.deal_hand(2)
+        self.assertEqual(len(self.x_Deck.cards), 50,
+                         "testing deal_hand removes cards from deck")
+
+    def test_Deck4(self):
+        self.x_Deck.pop_card(2)
+        self.assertEqual(len(self.x_Deck.cards), 51,
+                         "testing that pop_card removes cards from deck")
+
+    # Error #2: sort_cards does not sort remaining cards in deck: gives full
+    #  deck length
+    def test_Deck5(self):
+        self.x_Deck.deal_hand(3)
+        self.x_Deck.sort_cards()
+        self.assertEqual(len(self.x_Deck.cards), 49, "testing that sort_cards "
+                         "sorts only remaining cards in deck")
+
+    # Error #1: must reference Cards method, doesn't give face value of card
+    def test_Deck6(self):
+        Deck_string = self.x_Deck.__str__()
+        self.assertIn("Ace of Hearts", Deck_string,
+                      "testing string method of Deck with face value")
+
+    def test_Deck7(self):
+        self.assertEqual(len(self.x_Deck.deal_hand(5)), 5,
+                         "testing length of deal_hand")
+
+    def test_Deck8(self):
+        self.assertEqual(len(self.x_Deck.deal_hand(52)), 52, "testing maximum "
+                         "length that deal_hand can take from deck")
+
+    # Error #3: deal_hand cannot handle taking out large values from deck
+    def test_Deck9(self):
+        self.assertEqual(len(self.x_Deck.deal_hand(27)), 27, "testing large "
+                         "inputs for deal_hand to take from deck")
+
+    def test_Deck10(self):
+        self.assertEqual(len(self.x_Deck.deal_hand(20)), 20, "testing medium "
+                         "inputs for deal_hand to take from deck")
+
 
 
 
